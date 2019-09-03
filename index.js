@@ -13,13 +13,17 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 btnInput.addEventListener('click', () => {
+    if (!input.value) {
+        alert("Enter the value")
+        return
+    }
     fetch('/setcount', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            count: input.value ? input.value : 0
+            count: input.value 
         })
     })
         .then(data => data.json())
